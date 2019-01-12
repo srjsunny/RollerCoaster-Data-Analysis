@@ -22,7 +22,7 @@ The objective of the project is to analyze the RollerCoaster Dataset and solve v
   - [KPI 14](#kpi-14)
   - [KPI 15](#kpi-15)
   
-### Data Format:
+### Data Format: All the fields are comma delimited
 - park_id int,
 - theme string,
 - rollercoaster_type string,
@@ -61,6 +61,39 @@ The objective of the project is to analyze the RollerCoaster Dataset and solve v
    ` sbin/start-all.sh `
 - Start Hive shell. </br>
    ` bin/hive `
+- create a table 
+```
+create table rollercoaster
+(
+park_id int,
+theme string,
+rollercoaster_type string,
+custom_design int,
+excitement double,
+excitement_rating string,
+intensity double,
+intensity_rating string,
+nausea double,
+nausea_rating string,
+max_speed double,
+avg_speed double,
+ride_time int,
+ride_length int,
+max_pos_gs double,
+max_neg_gs double,
+max_lateral_gs double,
+total_air_time double,
+drops int,
+highest_drop_height int,
+inversions int
+) row format delimited fields terminated by ',';
+```
+
+- Load data into Hive table from our local file system
+```
+Load Data Local Inpath '/home/suraj/Desktop/rollercoasters.csv' Overwrite Into table rollercoaster;
+```
+
 
 ### KPI 1
  - Number of rollercoaster type based on excitement and nausea and also print theme name
